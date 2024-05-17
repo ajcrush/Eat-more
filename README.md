@@ -8,7 +8,7 @@
 - File watching algorithm - Written in c++
 - Caching - Faster Build
 - Image optimazation
-- Minification 
+- Minification
 - Bundling
 - Compress
 - Consistent Hashing
@@ -17,3 +17,34 @@
 - Error Handling
 - Tree Shaking - Remove unused code
 - Different dev and prod bundles
+
+# Food Ordering App (Food fire)
+
+// import img from "./src/swada.png"
+
+/\*\*
+
+- Header
+  -Logo
+
+* Nav
+
+- Body
+
+* Search
+* Restaurant Container
+  - Restro card
+    -Img
+  - Name of res star rating cuisines delievery time
+
+- Footer
+  - Copyright
+  - Links
+  - Contact
+
+\*/
+
+# React Hooks
+(Normal JS utility functions)
+- useState() - Superpowerful state variable in React
+- useEffect()
