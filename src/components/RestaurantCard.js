@@ -9,7 +9,7 @@ const RestaurantCard = ({
  sla,
 }) => {
  return (
-   <div className="res-card">
+   <div className="m-4 p-4 w-[230px]  bg-gray-100">
      <img
        className="res-logo"
        src={
