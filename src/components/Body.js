@@ -1,29 +1,50 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import useRestaurantName from "../utils/useRestaurantName";
-
+import { RESTAURANT_NAME_API } from "../utils/constants";
+import { withPromptedLabel } from "./RestaurantCard";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [listOfRestaurant , filteredRestaurant] = useRestaurantName();
-  console.log(listOfRestaurant);
+  const [listOfRestaurant, setListOfRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  async function fetchData(){
+    try{
+     const response = await fetch(RESTAURANT_NAME_API);
+     if(!response.ok){
+       throw new Error(`HTTP error! status: ${response.status}`);
+     }
+     const json = await response.json();
+     const restaurants = json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
+     setFilteredRestaurant(restaurants);
+     setListOfRestaurant(restaurants);
+    }
+    catch(error){
+     console.error("failed to fetch restaurant data:",error);
+    }
+   }
+
+  const RestaurantCardPromoted = withPromptedLabel(RestaurantCard);
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body ">
       <div className="flex  ">
         <div className="flex">
-          <input 
+          <input
             type="text"
-            className="inline  rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm w-60" 
+            className="inline  rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm w-60"
             placeholder="Seach a restaurant you want..."
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-0.5"
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-0.5"
             onClick={() => {
               // Filter the restraunt cards and update it
               const filteredRestaurant = listOfRestaurant.filter((res) =>
@@ -49,8 +70,15 @@ const Body = () => {
       </div>
       <div className="res-container flex flex-wrap m-4 ">
         {filteredRestaurant.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}>
-            <RestaurantCard  {...restaurant.info} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            {restaurant?.info?.isOpen ? (
+              <RestaurantCardPromoted {...restaurant.info} />
+            ) : (
+              <RestaurantCard {...restaurant.info} />
+            )}
           </Link>
         ))}
       </div>
