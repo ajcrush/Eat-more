@@ -14,6 +14,9 @@ const useRestaurantMenu = (resId) => {
   async function fetchData() {
     try {
       const response = await fetch(swiggy_menu_api_URL + resId);
+      if(!response.ok){
+        throw new Error(`HTTP Error! Status: ${response.status}`)
+      }
       const json = await response.json();
       //set restaurant Data
       const restaurantData =

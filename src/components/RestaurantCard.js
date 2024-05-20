@@ -9,7 +9,7 @@ const RestaurantCard = ({
  sla,
 }) => {
  return (
-   <div className="m-4 p-4 w-[230px]  bg-gray-100">
+   <div className="m-4 p-4 w-[230px]  bg-gray-100 rounded-lg ">
      <img
        className="res-logo"
        src={
@@ -18,7 +18,7 @@ const RestaurantCard = ({
        }
        alt="res-logo"
      />
-     <h3>{name}</h3>
+     <h3 className="font-bold py-4 text-lg">{name}</h3>
      <h4>{cuisines.join(", ")}</h4>
      <span>
        <h4>
