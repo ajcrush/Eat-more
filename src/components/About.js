@@ -1,5 +1,3 @@
-//
-
 import food from "../images/burger-image.png";
 
 const About = () => {

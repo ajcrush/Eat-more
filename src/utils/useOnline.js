@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 const useOnline = () => {
   // Initialize the state with the current online status
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isOnline, setIsOnline] = useState(true);
   useEffect(() => {
     // Define event handler for online and ofline services
     const handleOnline = () => setIsOnline(true);

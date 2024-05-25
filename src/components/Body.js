@@ -1,9 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState,useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURANT_NAME_API } from "../utils/constants";
 import { withPromptedLabel } from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -11,23 +12,25 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  async function fetchData(){
-    try{
-     const response = await fetch(RESTAURANT_NAME_API);
-     if(!response.ok){
-       throw new Error(`HTTP error! status: ${response.status}`);
-     }
-     const json = await response.json();
-     const restaurants = json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-     setFilteredRestaurant(restaurants);
-     setListOfRestaurant(restaurants);
+  async function fetchData() {
+    try {
+      const response = await fetch(RESTAURANT_NAME_API);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const json = await response.json();
+      const restaurants =
+        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+      setFilteredRestaurant(restaurants);
+      setListOfRestaurant(restaurants);
+    } catch (error) {
+      console.error("failed to fetch restaurant data:", error);
     }
-    catch(error){
-     console.error("failed to fetch restaurant data:",error);
-    }
-   }
+  }
 
   const RestaurantCardPromoted = withPromptedLabel(RestaurantCard);
+  const { setUserName, loggedInUser } = useContext(UserContext);
   return listOfRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
@@ -56,17 +59,27 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold m-1 rounded"
-          onClick={() => {
-            const filteredList = filteredRestaurant.filter(
-              (res) => res.info.avgRating > 4.3
-            );
-            setFilteredRestaurant(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="flex items-center ">
+          <button
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold m-1 rounded"
+            onClick={() => {
+              const filteredList = filteredRestaurant.filter(
+                (res) => res.info.avgRating > 4.3
+              );
+              setFilteredRestaurant(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
+        <div className="flex items-center ">
+          <label>Username : </label>
+          <input
+            className="border border-black p-2 m-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       <div className="res-container flex flex-wrap m-4 ">
         {filteredRestaurant.map((restaurant) => (
