@@ -45,6 +45,33 @@
 \*/
 
 # React Hooks
+
 (Normal JS utility functions)
+
 - useState() - Superpowerful state variable in React
 - useEffect()
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- Dispatch(action)
+- Selector
+
+# Types of testing (Developer)
+
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
+
+# Setting up testing in out app
+
+- Install React Testing Library
+- Installed Jest
+- Installed Babel dependencies
+- Configure Babel
+- Configure parcel config file to disable default babel transpilation(.parcelrc)
+- Jest configuartion npx jest --init
+- Install jsdom library
