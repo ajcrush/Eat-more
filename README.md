@@ -75,3 +75,6 @@
 - Configure parcel config file to disable default babel transpilation(.parcelrc)
 - Jest configuartion npx jest --init
 - Install jsdom library
+- Install @babel/preset-react to make jsx work in test cases
+- Include @babel/preset-react inside babel config
+- Install @testing-library/jest-dom
