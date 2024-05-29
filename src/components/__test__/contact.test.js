@@ -3,6 +3,14 @@ import Contact from "../Contact";
 import "@testing-library/jest-dom";
 
 describe("Contact us Page Test Case", () => {
+  // beforeAll(() => console.log("before all"));
+  // beforeEach(() => console.log("before each"));
+  // afterAll(() => {
+  //   console.log("After all");
+  // });
+  // afterEach(() => {
+  //   console.log("After Each");
+  // });
   //You can write it instead of test it is alias of test both will work
   it("Should load button inside contact component", () => {
     render(<Contact />);

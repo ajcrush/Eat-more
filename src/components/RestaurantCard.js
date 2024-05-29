@@ -1,15 +1,13 @@
 import { CDN_URL } from "../utils/constants";
 
-const RestaurantCard = ({
-  cloudinaryImageId,
-  name,
-  cuisines,
-  avgRating,
-  costForTwo,
-  sla,
-}) => {
+const RestaurantCard = (props) => {
+  const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
+    props;
   return (
-    <div className="m-4 p-4 w-[230px]  bg-gray-100 rounded-lg ">
+    <div
+      data-testid="resCard"
+      className="m-4 p-4 w-[230px]  bg-gray-100 rounded-lg "
+    >
       <img
         className="res-logo"
         src={CDN_URL + cloudinaryImageId}
@@ -28,12 +26,14 @@ const RestaurantCard = ({
     </div>
   );
 };
-export const  withPromptedLabel = (RestaurantCard) => {
+export const withPromptedLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-black text-white rounded-md m-2 p-2">Promoted</label>
-        <RestaurantCard {...props}/>
+        <label className="absolute bg-black text-white rounded-md m-2 p-2">
+          Promoted
+        </label>
+        <RestaurantCard {...props} />
       </div>
     );
   };

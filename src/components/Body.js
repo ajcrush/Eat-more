@@ -13,20 +13,20 @@ const Body = () => {
     fetchData();
   }, []);
   async function fetchData() {
-    try {
+    // try {
       const response = await fetch(RESTAURANT_NAME_API);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error! status: ${response.status}`);
+      // }
       const json = await response.json();
       const restaurants =
         json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
       setFilteredRestaurant(restaurants);
       setListOfRestaurant(restaurants);
-    } catch (error) {
-      console.error("failed to fetch restaurant data:", error);
-    }
+    // } catch (error) {
+      // console.error("failed to fetch restaurant data:", error);
+  // }
   }
 
   const RestaurantCardPromoted = withPromptedLabel(RestaurantCard);
@@ -39,6 +39,7 @@ const Body = () => {
         <div className="flex">
           <input
             type="text"
+            data-testid = "searchInput"
             className="inline  rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm w-60"
             placeholder="Seach a restaurant you want..."
             value={searchText}
@@ -61,6 +62,7 @@ const Body = () => {
         </div>
         <div className="flex items-center ">
           <button
+            data-testid="filterButton"
             className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold m-1 rounded"
             onClick={() => {
               const filteredList = filteredRestaurant.filter(

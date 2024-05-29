@@ -36,6 +36,7 @@ const Header = () => {
           <li className="px-4">
             <Link to="/cart">
               <i className="fa-solid fa-cart-shopping font-bold text-xl">
+                cart
                 {cartItems.length}
               </i>
             </Link>
