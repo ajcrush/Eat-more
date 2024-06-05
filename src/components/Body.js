@@ -14,8 +14,9 @@ const Body = () => {
   }, []);
   async function fetchData() {
     // try {
-      const response = await fetch(RESTAURANT_NAME_API);
+      const response = await fetch("https://mohit-food-server.onrender.com/swiggy")
       // if (!response.ok) {
+        // console.log(response.data);
       //   throw new Error(`HTTP error! status: ${response.status}`);
       // }
       const json = await response.json();
