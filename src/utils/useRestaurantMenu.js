@@ -18,7 +18,6 @@ const useRestaurantMenu = (resId) => {
       const response = await axios.get(baseUrl, {
         params: { resId },
       });
-      console.log(response.data);
       setResInfo(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
