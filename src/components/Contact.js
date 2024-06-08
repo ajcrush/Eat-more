@@ -1,6 +1,6 @@
 // rafce
 import { useState } from "react";
-// import contact from "../images/Contact-Us.png"
+import contact from "../images/Contact-Us.png"
 const Contact = () => {
   const [message, setMessage] = useState(false);
   const handleSubmit = (e) => {
@@ -10,7 +10,7 @@ const Contact = () => {
   return (
     <div className="contact-container flex flex-wrap  justify-evenly overflow-y-hidden ">
       <div className="contact-left w-3/5">
-        {/* <img src={contact} /> */}
+        <img src={contact} />
       </div>
       <div className="contact-right flex flex-col content-center justify-center m-5 ">
         <h1 className="text-2xl text-center font-bold">Contact Us</h1>

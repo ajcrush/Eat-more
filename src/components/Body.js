@@ -14,20 +14,22 @@ const Body = () => {
   }, []);
   async function fetchData() {
     // try {
-      const response = await fetch("https://mohit-food-server.onrender.com/swiggy")
-      // if (!response.ok) {
-        // console.log(response.data);
-      //   throw new Error(`HTTP error! status: ${response.status}`);
-      // }
-      const json = await response.json();
-      const restaurants =
-        json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || [];
-      setFilteredRestaurant(restaurants);
-      setListOfRestaurant(restaurants);
+    const response = await fetch(
+      "https://mohit-food-server.onrender.com/swiggy"
+    );
+    // if (!response.ok) {
+    // console.log(response.data);
+    //   throw new Error(`HTTP error! status: ${response.status}`);
+    // }
+    const json = await response.json();
+    const restaurants =
+      json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || [];
+    setFilteredRestaurant(restaurants);
+    setListOfRestaurant(restaurants);
     // } catch (error) {
-      // console.error("failed to fetch restaurant data:", error);
-  // }
+    // console.error("failed to fetch restaurant data:", error);
+    // }
   }
 
   const RestaurantCardPromoted = withPromptedLabel(RestaurantCard);
@@ -36,11 +38,11 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body ">
-      <div className="flex  ">
+      <div className="flex text-center items-center justify-center ">
         <div className="flex">
           <input
             type="text"
-            data-testid = "searchInput"
+            data-testid="searchInput"
             className="inline  rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm w-60"
             placeholder="Seach a restaurant you want..."
             value={searchText}
@@ -75,26 +77,22 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-        <div className="flex items-center ">
+        {/* <div className="flex items-center ">
           <label>Username : </label>
           <input
             className="border border-black p-2 m-2"
             value={loggedInUser}
             onChange={(e) => setUserName(e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
-      <div className="res-container flex flex-wrap m-4 ">
+      <div className="w-auto flex flex-wrap items-center justify-center self-stretch">
         {filteredRestaurant.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            {restaurant?.info?.isOpen ? (
-              <RestaurantCardPromoted {...restaurant.info} />
-            ) : (
-              <RestaurantCard {...restaurant.info} />
-            )}
+            <RestaurantCard  {...restaurant.info} />
           </Link>
         ))}
       </div>
