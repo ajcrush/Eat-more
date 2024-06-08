@@ -17,12 +17,12 @@ To install this project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/ajcrush/namaste-react.git
+    git clone https://github.com/ajcrush/Eat-more.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd your-repo-name
+    cd Eat-more
     ```
 
 3. Install the dependencies:
