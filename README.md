@@ -99,6 +99,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 If you have any questions or suggestions, feel free to reach out:
 
 - Your Name: [Mohit kumar sharma](mohitanand8987@gmail.com)
-- GitHub: [@your-username](https://github.com/ajcrush)
+- GitHub: [@ajcrush](https://github.com/ajcrush)
 
 ---
