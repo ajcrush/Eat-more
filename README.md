@@ -1,6 +1,6 @@
-# Project Title
+# Eat More a food ordering app
 
-> A brief description of your project and its purpose.
+> EatMore is a dynamic and user-friendly food app designed to revolutionize your culinary experience. Built with React, EatMore offers a seamless, responsive, and highly interactive platform to explore, a wide variety of dishes from your favorite local restaurants.I am using swiggy live api for this.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ To install this project, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/ajcrush/namaste-react.git
     ```
 
 2. Navigate to the project directory:
@@ -49,7 +49,7 @@ To use this project, follow these steps:
     yarn start
     ```
 
-2. Open your browser and navigate to `http://localhost:3000`.
+2. Open your browser and navigate to `http://localhost:1234`.
 
 3. To run tests:
     ```bash
@@ -63,9 +63,9 @@ To use this project, follow these steps:
 
 ## Features
 
-- Feature 1: Brief description of feature 1.
-- Feature 2: Brief description of feature 2.
-- Feature 3: Brief description of feature 3.
+- Intuitive User Interface: Navigate effortlessly through a sleek and modern interface. Our app's design ensures an engaging and straightforward experience for all users, whether you're tech-savvy or not.
+- Extensive Menu Options:Browse through extensive menus featuring diverse cuisines. Detailed descriptions, high-quality images.
+
 
 ## Contributing
 
@@ -98,9 +98,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or suggestions, feel free to reach out:
 
-- Your Name: [your-email@example.com](mailto:your-email@example.com)
-- GitHub: [@your-username](https://github.com/your-username)
+- Your Name: [Mohit kumar sharma](mohitanand8987@gmail.com)
+- GitHub: [@your-username](https://github.com/ajcrush)
 
 ---
-
-*This README was generated with ❤️ by [ChatGPT](https://github.com/openai/chatgpt)*.
