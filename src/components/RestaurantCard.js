@@ -9,29 +9,45 @@ const RestaurantCard = (props) => {
     costForTwo,
     sla,
     areaName,
+    highlight = "",
   } = props;
+  // Helper to highlight match
+  const getHighlightedName = () => {
+    if (!highlight) return name;
+    const idx = name.toLowerCase().indexOf(highlight.toLowerCase());
+    if (idx === -1) return name;
+    return (
+      <>
+        {name.substring(0, idx)}
+        <span className="bg-yellow-200 font-bold">
+          {name.substring(idx, idx + highlight.length)}
+        </span>
+        {name.substring(idx + highlight.length)}
+      </>
+    );
+  };
   return (
     <div
       data-testid="resCard"
-      className=" w-60 shadow-[-1px_5px_10px_5px_rgba(112,112,112,0.2)] cursor-pointer m-5 p-2.5 rounded-[5px] hover:scale-[0.98] "
+      className="w-full bg-white rounded-lg shadow-sm m-0 mb-3 p-3 flex flex-col transition-transform duration-150 hover:scale-[0.98]"
     >
       <img
-        className="w-[100%] rounded-[10px]"
+        className="w-full h-32 object-cover rounded-md mb-2"
         src={CDN_URL + cloudinaryImageId}
         alt="res-logo"
       />
-      <h3 className="whitespace-nowrap overflow-hidden text-ellipsis font-xl font-bold">
-        {name}
+      <h3 className="whitespace-nowrap overflow-hidden text-ellipsis font-bold text-base leading-6 mb-1">
+        {getHighlightedName()}
       </h3>
-      <h5 className="font-light whitespace-nowrap overflow-hidden text-ellipsis">
+      <h5 className="font-light whitespace-nowrap overflow-hidden text-ellipsis text-xs leading-5 mb-0.5">
         {cuisines.join(", ")}
       </h5>
-      <h5 className="font-light whitespace-nowrap overflow-hidden text-ellipsis">
+      <h5 className="font-light whitespace-nowrap overflow-hidden text-ellipsis text-xs leading-5 mb-1">
         {areaName}
       </h5>
-      <span className="flex justify-between text-center mt-[8px]">
+      <span className="flex flex-wrap justify-between text-center mt-1 text-xs leading-5">
         <h4
-          className="flex items-center rounded text-white p-1 mt-1"
+          className="flex items-center rounded text-white px-2 py-0.5 mt-1 text-xs"
           style={
             avgRating < 4
               ? { backgroundColor: "red", color: "white" }
@@ -41,16 +57,16 @@ const RestaurantCard = (props) => {
           <i className="fa-solid fa-star text-[10px] pt-0.25 pr-[5px] pb-[3px] pl-0"></i>
           {avgRating}
         </h4>
-        <h4 className="font-[bolder] text-sm mt-2.5 px-0.5 py-0 text-[color:var(--light-text-title)]">
+        <h4 className="font-[bolder] text-xs mt-2 px-1 py-0 text-gray-400">
           .
         </h4>
-        <h4 className="font-[bolder] text-sm mt-2.5 px-0.5 py-0 text-[color:light-black]">
+        <h4 className="font-[bolder] text-xs mt-2 px-1 py-0 text-gray-700">
           {sla?.deliveryTime + " minutes"}
         </h4>
-        <h4 className="font-[bolder] text-sm mt-2.5 px-0.5 py-0 text-[color:var(--light-text-title)]">
+        <h4 className="font-[bolder] text-xs mt-2 px-1 py-0 text-gray-400">
           .
         </h4>
-        <h4 className="font-[bolder] text-sm mt-2.5 px-0.5 py-0 text-[color:var(--light-text-title)]">
+        <h4 className="font-[bolder] text-xs mt-2 px-1 py-0 text-gray-700">
           {costForTwo}
         </h4>
       </span>

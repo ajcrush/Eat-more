@@ -3,11 +3,37 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: [],
+    items: [], // [{item, quantity}]
   },
   reducers: {
     addItem: (state, action) => {
-      state.items.push(action.payload);
+      const idx = state.items.findIndex(
+        (i) => i.item.card.info.id === action.payload.card.info.id
+      );
+      if (idx > -1) {
+        state.items[idx].quantity += 1;
+      } else {
+        state.items.push({ item: action.payload, quantity: 1 });
+      }
+    },
+    incrementItem: (state, action) => {
+      const idx = state.items.findIndex(
+        (i) => i.item.card.info.id === action.payload
+      );
+      if (idx > -1) {
+        state.items[idx].quantity += 1;
+      }
+    },
+    decrementItem: (state, action) => {
+      const idx = state.items.findIndex(
+        (i) => i.item.card.info.id === action.payload
+      );
+      if (idx > -1) {
+        state.items[idx].quantity -= 1;
+        if (state.items[idx].quantity <= 0) {
+          state.items.splice(idx, 1);
+        }
+      }
     },
     removeItem: (state) => {
       state.items.pop();
@@ -19,4 +45,5 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export const { addItem, incrementItem, decrementItem, removeItem, clearCart } =
+  cartSlice.actions;

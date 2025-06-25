@@ -1,18 +1,33 @@
 import { shimmer_card_unit, shimmer_menu_card_unit } from "../utils/constants";
+
 export const MenuShimmer = () => {
   return (
-    <div className="restaurant-menu">
-      <div className="restaurant-summary  bg-[#777] animate-pulse">
-        <img className="shimmer-img h-[200px] w-[300] bg-[#777] stroke animate-pulse" />
-        <div className="restaurant-summary-details h-[14px] bg-[#777] animate-pulse">
-          <h2 className="shimmer-w40 w-[40%] mt-2.5 stroke animate h-[14px] bg-[#777] animate-pulse"></h2>
-          <p className="shimmer-w20 w-[20%] mt-2.5 stroke animate h-[14px] bg-[#777] animate-pulse"></p>
-          <div className="shimmer-w60 w-[60%] mt-2.5  stroke animate h-[14px] bg-[#777] animate-pulse"></div>
+    <div className="max-w-2xl mx-auto mt-8">
+      {/* Restaurant summary shimmer */}
+      <div className="flex items-center gap-4 mb-8 animate-pulse">
+        <div className="bg-gray-300 rounded-lg h-24 w-24"></div>
+        <div className="flex-1">
+          <div className="h-6 bg-gray-300 rounded w-2/3 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
         </div>
       </div>
-    </div>,
-    <div className="sf">{<Shimmer/>}</div>
-   
+      {/* Menu item shimmers */}
+      <div className="flex flex-col gap-6">
+        {Array(5)
+          .fill(0)
+          .map((_, idx) => (
+            <div key={idx} className="flex items-center gap-4 animate-pulse">
+              <div className="flex-1">
+                <div className="h-5 bg-gray-300 rounded w-2/3 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/4 mb-1"></div>
+                <div className="h-3 bg-gray-100 rounded w-3/4"></div>
+              </div>
+              <div className="bg-gray-300 rounded-lg h-16 w-16"></div>
+            </div>
+          ))}
+      </div>
+    </div>
   );
 };
 

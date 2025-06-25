@@ -13,6 +13,9 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/cart";
+import PaymentPage from "./components/PaymentPage";
+import OrderSuccessPage from "./components/OrderSuccessPage";
+import AddressPage from "./components/AddressPage";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -69,7 +72,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart/>,
+        element: <Cart />,
+      },
+      {
+        path: "/address",
+        element: <AddressPage />,
+      },
+      {
+        path: "/payment",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/order-success",
+        element: <OrderSuccessPage />,
       },
     ],
     errorElement: <Error />,
